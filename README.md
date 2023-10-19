@@ -98,11 +98,14 @@ View can be created by the following code snippet.
 **[XAML]**
 
 ```
-    <StackLayout
-        HorizontalOptions = "Center"
+    <ContentPage.BindingContext>
+        <local:ViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout 
+        HorizontalOptions="Center"
         VerticalOptions="Center"
         Padding="20,0,20,0">
-         <Label
+        <Label
             Text="Bus Ticket Booking"
             FontSize="Large"
             FontAttributes="Bold"
@@ -119,6 +122,63 @@ View can be created by the following code snippet.
             Text="{Binding ToText}"
             HeightRequest="50"
             Margin="0,10,0,10"/>
+        <buttons:SfSegmentedControl 
+            x:Name="Class" 
+            HeightRequest="80"
+            VisibleSegmentsCount="2"
+            Color="White"
+            SelectionTextColor="#007CEE"
+            FontColor="#929292"
+            BorderColor="#929292"
+            SelectedIndex="1"
+            ItemsSource="{Binding ItemCollection,Mode=TwoWay}"
+            BackgroundColor="Transparent">
+            <buttons:SfSegmentedControl.SelectionIndicatorSettings>
+                <buttons:SelectionIndicatorSettings 
+                    Color="White">
+                </buttons:SelectionIndicatorSettings>
+            </buttons:SfSegmentedControl.SelectionIndicatorSettings>
+        </buttons:SfSegmentedControl>
+        <buttons:SfSegmentedControl
+            SelectionTextColor="White"
+            HeightRequest="80"
+            VisibleSegmentsCount="6"
+            Color="Transparent" 
+            BorderColor="#929292"
+            SelectedIndex="1"
+            ItemsSource="{Binding}"
+            FontColor="#929292"
+            BackgroundColor="Transparent" >
+            <segmentCollection:List x:TypeArguments="x:String">
+                <x:String>1</x:String>
+                <x:String>2</x:String>
+                <x:String>3</x:String>
+                <x:String>4</x:String>
+                <x:String>5</x:String>
+                <x:String>6</x:String>
+            </segmentCollection:List>
+            <buttons:SfSegmentedControl.SelectionIndicatorSettings>
+                <buttons:SelectionIndicatorSettings 
+                    Color="#007CEE"
+                    Position="Fill">
+                </buttons:SelectionIndicatorSettings>
+            </buttons:SfSegmentedControl.SelectionIndicatorSettings>
+        </buttons:SfSegmentedControl>
+        <buttons:SfSegmentedControl
+            BorderColor="Transparent" 
+            HeightRequest="80"
+            HorizontalOptions="Center"
+            x:Name="ViewContainer"
+            VisibleSegmentsCount="2"
+            Color="Transparent"
+            ItemsSource="{Binding ViewCollection}"
+            SegmentPadding="30">
+            <buttons:SfSegmentedControl.SelectionIndicatorSettings>
+                <buttons:SelectionIndicatorSettings
+                    Color="Transparent">
+                </buttons:SelectionIndicatorSettings>
+            </buttons:SfSegmentedControl.SelectionIndicatorSettings>
+        </buttons:SfSegmentedControl>
     </StackLayout>
 ```
 
